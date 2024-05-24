@@ -1,6 +1,5 @@
 package org.example.pricingcriteria;
 
-import org.example.model.PriceModel;
 import org.example.model.PricingTier;
 import org.example.model.ProductConfiguration;
 
@@ -18,9 +17,9 @@ public abstract class BasePriceModel {
         return finaPrice.toString();
     }
 
-    public String calculatePrice(PriceModel priceModel, ProductConfiguration productConfiguration, PricingTier currentTier, int quantity) {
+    public String calculatePrice(ProductConfiguration productConfiguration, PricingTier currentTier, int quantity) {
         if (nextHandler != null) {
-            return nextHandler.calculatePrice(priceModel, productConfiguration, currentTier, quantity);
+            return nextHandler.calculatePrice(productConfiguration, currentTier, quantity);
         }
         return "";
     }

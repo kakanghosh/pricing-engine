@@ -14,10 +14,10 @@ public class VolumePriceModel extends BasePriceModel {
     }
 
     @Override
-    public String calculatePrice(PriceModel priceModel, ProductConfiguration productConfiguration, PricingTier currentTier, int quantity) {
-        if (this.priceModel == priceModel) {
+    public String calculatePrice(ProductConfiguration productConfiguration, PricingTier currentTier, int quantity) {
+        if (this.priceModel == currentTier.priceModel()) {
             return defaultCalculation(currentTier, quantity);
         }
-        return super.calculatePrice(priceModel, productConfiguration, currentTier, quantity);
+        return super.calculatePrice(productConfiguration, currentTier, quantity);
     }
 }

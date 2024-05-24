@@ -32,7 +32,6 @@ public class ProductPricingServiceImpl implements ProductPricingService {
         PricingTier currentPricingTier = getValidCurrentPricingTier(productConfigOptional.get(), productPricingRequest.quantity());
         BasePriceModel priceModel = pricingModelHandlerFactory.getPriceModel();
         String price = priceModel.calculatePrice(
-                currentPricingTier.priceModel(),
                 productConfigOptional.get(),
                 currentPricingTier,
                 productPricingRequest.quantity()

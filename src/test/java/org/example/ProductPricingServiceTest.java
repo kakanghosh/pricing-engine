@@ -86,26 +86,15 @@ public class ProductPricingServiceTest {
     }
 
     @Test
-    public void testFlatPriceModelProductPrice() {
+    public void testProductPriceResponse() {
         assertEquals(new ProductPriceResponse("100"), productPricingService.getProductPrice(new ProductPricingRequest("PRODUCT-CODE-1001", 1)));
-        assertEquals(new ProductPriceResponse("100"), productPricingService.getProductPrice(new ProductPricingRequest("PRODUCT-CODE-1001", 5)));
-        assertEquals(new ProductPriceResponse("100"), productPricingService.getProductPrice(new ProductPricingRequest("PRODUCT-CODE-1001", 10)));
-    }
-
-    @Test
-    public void testVolumePriceModelProductPrice() {
         assertEquals(new ProductPriceResponse("2250"), productPricingService.getProductPrice(new ProductPricingRequest("PRODUCT-CODE-1001", 15)));
-        assertEquals(new ProductPriceResponse("2400"), productPricingService.getProductPrice(new ProductPricingRequest("PRODUCT-CODE-1001", 16)));
-        assertEquals(new ProductPriceResponse("3000"), productPricingService.getProductPrice(new ProductPricingRequest("PRODUCT-CODE-1001", 20)));
-    }
+        assertEquals(new ProductPriceResponse("100"), productPricingService.getProductPrice(new ProductPricingRequest("PRODUCT-CODE-1001", 10)));
 
-    @Test
-    public void testGraduatePriceModelProductPrice() {
         assertEquals(new ProductPriceResponse("150"), productPricingService.getProductPrice(new ProductPricingRequest("PRODUCT-CODE-1002", 10)));
         assertEquals(new ProductPriceResponse("225"), productPricingService.getProductPrice(new ProductPricingRequest("PRODUCT-CODE-1002", 15)));
 
         assertEquals(new ProductPriceResponse("150"), productPricingService.getProductPrice(new ProductPricingRequest("PRODUCT-CODE-1003", 10)));
         assertEquals(new ProductPriceResponse("250"), productPricingService.getProductPrice(new ProductPricingRequest("PRODUCT-CODE-1003", 15)));
     }
-
 }

@@ -1,7 +1,12 @@
 package org.example;
 
 import org.example.factory.PricingModelHandlerFactory;
-import org.example.model.*;
+import org.example.model.PriceModel;
+import org.example.model.PricingTier;
+import org.example.model.ProductConfigRequest;
+import org.example.model.ProductPriceResponse;
+import org.example.model.ProductPricingRequest;
+import org.example.model.QuantityRange;
 import org.example.service.ProductConfigurationService;
 import org.example.service.ProductConfigurationServiceImpl;
 import org.example.service.ProductPricingService;

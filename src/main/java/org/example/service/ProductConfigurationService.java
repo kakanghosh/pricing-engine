@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface ProductConfigurationService {
     void addNewProductConfiguration(ProductConfigRequest productConfigRequest);
 
-    Optional<ProductConfiguration> getProductConfigByProductBy(String productId);
+    Optional<ProductConfiguration> getProductConfigByProductId(String productId);
 }

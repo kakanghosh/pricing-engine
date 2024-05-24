@@ -23,7 +23,7 @@ public class ProductPricingServiceImpl implements ProductPricingService {
 
     @Override
     public ProductPriceResponse getProductPrice(ProductPricingRequest productPricingRequest) {
-        Optional<ProductConfiguration> productConfigOptional = productConfigurationService.getProductConfigByProductBy(
+        Optional<ProductConfiguration> productConfigOptional = productConfigurationService.getProductConfigByProductId(
                 productPricingRequest.productId()
         );
         if (productConfigOptional.isEmpty()) {

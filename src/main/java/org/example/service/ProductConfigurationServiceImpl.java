@@ -3,9 +3,18 @@ package org.example.service;
 import org.example.exception.InvalidPriceModelException;
 import org.example.exception.InvalidQuantityRangeException;
 import org.example.exception.TierEmptyException;
-import org.example.model.*;
+import org.example.model.PriceModel;
+import org.example.model.PricingTier;
+import org.example.model.ProductConfigRequest;
+import org.example.model.ProductConfiguration;
+import org.example.model.QuantityRange;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public class ProductConfigurationServiceImpl implements ProductConfigurationService {
 
@@ -30,7 +39,7 @@ public class ProductConfigurationServiceImpl implements ProductConfigurationServ
     }
 
     @Override
-    public Optional<ProductConfiguration> getProductConfigByProductBy(String productId) {
+    public Optional<ProductConfiguration> getProductConfigByProductId(String productId) {
         if (!productConfigMap.containsKey(productId)) {
             return Optional.empty();
         }

@@ -1,6 +1,6 @@
 package org.example.service;
 
-import org.example.exception.ProductConfigNotFoundException;
+import org.example.exception.InvalidProductException;
 import org.example.exception.QuantityOutOfRangeException;
 import org.example.factory.PricingModelHandlerFactory;
 import org.example.model.PricingTier;
@@ -27,7 +27,7 @@ public class ProductPricingServiceImpl implements ProductPricingService {
                 productPricingRequest.productId()
         );
         if (productConfigOptional.isEmpty()) {
-            throw new ProductConfigNotFoundException();
+            throw new InvalidProductException();
         }
         PricingTier currentPricingTier = getValidCurrentPricingTier(productConfigOptional.get(), productPricingRequest.quantity());
         BasePriceModel priceModel = pricingModelHandlerFactory.getPriceModel();

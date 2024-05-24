@@ -122,4 +122,14 @@ public class ProductConfigurationServiceTest {
         assertEquals("PRODUCT-CODE-1001", productConfigOptional.get().productId());
         assertArrayEquals(pricingTiers.toArray(new PricingTier[0]), productConfigOptional.get().tiers().toArray());
     }
+
+    @Test
+    public void testAddMultipleProductConfig() {
+        ProductConfigRequest productConfigRequest1 = new ProductConfigRequest("PRODUCT-CODE-1001", pricingTiers);
+        productConfigurationService.addNewProductConfiguration(productConfigRequest1);
+        ProductConfigRequest productConfigRequest2 = new ProductConfigRequest("PRODUCT-CODE-1002", pricingTiers);
+        productConfigurationService.addNewProductConfiguration(productConfigRequest2);
+        assertTrue(productConfigurationService.getProductConfigByProductId("PRODUCT-CODE-1001").isPresent());
+        assertTrue(productConfigurationService.getProductConfigByProductId("PRODUCT-CODE-1002").isPresent());
+    }
 }

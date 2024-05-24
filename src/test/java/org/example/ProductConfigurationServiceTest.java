@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.exception.InvalidPriceException;
 import org.example.exception.InvalidPriceModelException;
 import org.example.exception.InvalidProductIdException;
 import org.example.exception.InvalidQuantityRangeException;
@@ -63,6 +64,17 @@ public class ProductConfigurationServiceTest {
     }
 
     @Test
+    public void testInvalidPrice() {
+        assertThrows(InvalidPriceException.class, () -> {
+            new PricingTier(
+                    new QuantityRange(1, 10),
+                    new BigDecimal("-100"),
+                    PriceModel.FLAT
+            );
+        });
+    }
+
+    @Test
     public void testOverlappingQuantityRange() {
         var overlappingTiers = List.of(
                 new PricingTier(
@@ -107,7 +119,7 @@ public class ProductConfigurationServiceTest {
         Optional<ProductConfiguration> productConfigOptional = productConfigurationService.getProductConfigByProductId("PRODUCT-CODE-1001");
         assertTrue(productConfigOptional.isEmpty());
     }
-    
+
     @Test
     public void testAddNewProductConfigInvalidProductId() {
         assertThrows(InvalidProductIdException.class, () -> new ProductConfigRequest(null, pricingTiers));

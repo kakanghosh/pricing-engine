@@ -6,8 +6,7 @@ import java.util.Objects;
 
 public record ProductPricingRequest(String productId, int quantity) {
     public ProductPricingRequest {
-        Objects.requireNonNull(productId);
-        if (productId.isBlank() || quantity <= 0) {
+        if (Objects.isNull(productId) || productId.isBlank() || quantity <= 0) {
             throw new InvalidProductPricingRequestException(String.format("productId: %s, quantity: %d", productId, quantity));
         }
     }

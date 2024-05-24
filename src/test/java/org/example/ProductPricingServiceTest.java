@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.exception.InvalidProductException;
+import org.example.exception.InvalidProductPricingRequestException;
 import org.example.exception.QuantityOutOfRangeException;
 import org.example.factory.PricingModelHandlerFactory;
 import org.example.model.PriceModel;
@@ -68,6 +69,12 @@ public class ProductPricingServiceTest {
 
     @Test
     public void testProductPriceForInvalidProductId() {
+        assertThrows(InvalidProductPricingRequestException.class, () -> new ProductPricingRequest(null, 10));
+        assertThrows(InvalidProductPricingRequestException.class, () -> new ProductPricingRequest("", 10));
+    }
+
+    @Test
+    public void testProductPriceForMissingProductId() {
         var request = new ProductPricingRequest("PRODUCT-CODE-100001", 10);
         assertThrows(InvalidProductException.class, () -> productPricingService.getProductPrice(request));
     }

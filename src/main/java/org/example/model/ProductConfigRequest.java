@@ -8,8 +8,7 @@ import java.util.Objects;
 
 public record ProductConfigRequest(String productId, List<PricingTier> tiers) {
     public ProductConfigRequest(String productId, List<PricingTier> tiers) {
-        Objects.requireNonNull(productId);
-        if (productId.isBlank()) {
+        if (Objects.isNull(productId) || productId.isBlank()) {
             throw new InvalidProductIdException(productId);
         }
         if (tiers.isEmpty()) {

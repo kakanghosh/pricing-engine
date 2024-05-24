@@ -107,9 +107,10 @@ public class ProductConfigurationServiceTest {
         Optional<ProductConfiguration> productConfigOptional = productConfigurationService.getProductConfigByProductId("PRODUCT-CODE-1001");
         assertTrue(productConfigOptional.isEmpty());
     }
-
+    
     @Test
-    public void testAddNewProductConfigProductIdMissing() {
+    public void testAddNewProductConfigInvalidProductId() {
+        assertThrows(InvalidProductIdException.class, () -> new ProductConfigRequest(null, pricingTiers));
         assertThrows(InvalidProductIdException.class, () -> new ProductConfigRequest("", pricingTiers));
     }
 

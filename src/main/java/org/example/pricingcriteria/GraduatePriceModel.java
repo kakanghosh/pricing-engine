@@ -30,12 +30,9 @@ public class GraduatePriceModel extends BasePriceModel {
         int tierIndex = 0;
         while (quantity > 0) {
             PricingTier currentTier = productConfiguration.tiers().get(tierIndex);
-            if (quantity > currentTier.range().to()) {
-                totalPrice = totalPrice.add(new BigDecimal(defaultCalculation(currentTier, currentTier.range().to())));
-            } else {
-                totalPrice = totalPrice.add(new BigDecimal(defaultCalculation(currentTier, quantity)));
-            }
-            quantity -= currentTier.range().to();
+            int currentQuantity = Math.min(currentTier.totalQuantity(), quantity);
+            totalPrice = totalPrice.add(new BigDecimal(defaultCalculation(currentTier, currentQuantity)));
+            quantity -= currentQuantity;
             tierIndex++;
         }
         return totalPrice.toString();

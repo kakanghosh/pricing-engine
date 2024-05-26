@@ -73,11 +73,10 @@ public class ProductConfigurationServiceImpl implements ProductConfigurationServ
         int tierSize = quantityRanges.size();
         for (int i = 1; i < tierSize; i++) {
             QuantityRange currentRange = quantityRanges.get(i);
-            if (currentRange.from() == validRageList.getLast().to() + 1) {
-                validRageList.add(currentRange);
-                continue;
+            if (validRageList.getLast().to() + 1 != currentRange.from()) {
+                throw new InvalidQuantityRangeException("Range: " + currentRange);
             }
-            throw new InvalidQuantityRangeException("Range: " + currentRange);
+            validRageList.add(currentRange);
         }
     }
 }

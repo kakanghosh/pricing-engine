@@ -38,15 +38,3 @@
   tiers, a buyer can ‘graduate’ into a different price. For example,
 * If a buyer wants to buy 8 units of a product, the total cost is = 8 * $100
   If the buyer wants 15 units, the cost is 10 * $100 + 5 * $150 = $1750
-
-### Question for clarification
-
-* What is basically range in product configuration? is it like bulk amount price? (LGTM)
-* Are we going to support multi currency? Or this will be USD for now (LGTM)?
-* Can price model be different in multiple tiers? (LGTM)
-* Where we will get the product configuration, is this pre-configured in the system?
-* What if client requested product count is not in the range of the product configuration?
-* How the calculation will take place for Volume + Flat pricing tiers, if they coexist?
-* Are we going to focus on developing functionality for dynamic product configuration or we will assume and set static
-  product pricing config for products? (LGTM)
-* Do we need to consider the multi-threading environment in terms of request processing?
